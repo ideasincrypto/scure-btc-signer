@@ -7,12 +7,20 @@
     "index.js.map",
     "index.d.ts",
     "index.d.ts.map",
-    "index.ts"
+    "index.ts",
+    "esm/index.js",
+    "esm/index.js.map"
   ],
-  "type": "module",
   "main": "index.js",
   "module": "index.js",
   "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./esm/index.js",
+      "default": "./index.js"
+    }
+  },
   "dependencies": {
     "@noble/curves": "~1.1.0",
     "@noble/hashes": "~1.3.1",
@@ -34,10 +42,10 @@
     "url": "git+https://github.com/paulmillr/scure-btc-signer.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc -p tsconfig.esm.json",
     "lint": "prettier --check index.ts",
     "format": "prettier --write index.ts",
-    "test": "node test/index.test.js && node test/psbt-test/bip174-psbt-extended.test.js",
+    "test": "node test/index.test.mjs",
     "test:extended": "node --experimental-loader ./test/bitcoinjs-test/esm-loader.js ./test/bitcoinjs-test/index.test.js",
     "test:slow": "node test/index.test.js && node test/slow.test.js"
   },

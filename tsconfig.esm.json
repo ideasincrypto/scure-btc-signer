@@ -2,13 +2,10 @@
   "compilerOptions": {
     "target": "es2020",
     "lib": ["es2020"],
-    "module": "commonjs",
-    "outDir": ".",
-    "resolveJsonModule": true,
+    "module": "es6",
+    "moduleResolution": "bundler",
+    "outDir": "esm",
     "baseUrl": ".",
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
     "strict": true,
     "allowSyntheticDefaultImports": false,
     "allowUnreachableCode": false,
@@ -19,6 +16,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
   },
-  "include": ["index.ts", "_type_test.ts"],
+  "include": ["index.ts"],
   "exclude": ["node_modules", "lib"]
 }
